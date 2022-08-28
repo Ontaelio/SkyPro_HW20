@@ -59,7 +59,14 @@ class TestMoviesDAO:
 
     def test_create(self, movies_dao, movie_1, movie_as_dict):
         movies_dao.create(movie_as_dict)
-        assert movies_dao.get_one(2).title == movie_as_dict['title']
+        a = movies_dao.get_one(2)
+        assert a.title == movie_as_dict['title']
+        assert a.description == movie_as_dict['description']
+        assert a.trailer == movie_as_dict['trailer']
+        assert a.year == movie_as_dict['year']
+        assert a.rating == movie_as_dict['rating']
+        assert a.genre_id == movie_as_dict['genre_id']
+        assert a.director_id == movie_as_dict['director_id']
 
     def test_update(self, movies_dao, movie_1, movie_as_dict):
         assert movies_dao.get_one(movie_1.id) == movie_1
@@ -67,6 +74,12 @@ class TestMoviesDAO:
         movies_dao.update(movie_as_dict)
         a = movies_dao.get_one(movie_1.id)
         assert a.title == movie_as_dict['title']
+        assert a.description == movie_as_dict['description']
+        assert a.trailer == movie_as_dict['trailer']
+        assert a.year == movie_as_dict['year']
+        assert a.rating == movie_as_dict['rating']
+        assert a.genre_id == movie_as_dict['genre_id']
+        assert a.director_id == movie_as_dict['director_id']
 
     def test_delete(self, movies_dao, movie_1, movie_2):
         assert movies_dao.get_one(movie_2.id) == movie_2
