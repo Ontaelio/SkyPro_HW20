@@ -1,4 +1,4 @@
-from unittest.mock import patch, MagicMock
+from unittest.mock import patch
 
 import pytest
 
@@ -47,24 +47,10 @@ class TestDirectorService:
         assert director_service.update(director_as_dict).name == 'updated_director'
 
     def test_director_part_update(self, director_service, director_dao_mock, director_as_dict):
-        director_service.partially_update(director_as_dict) #.name == 'updated_director'
+        director_service.partially_update(director_as_dict)
         assert director_dao_mock.update.called
 
     def test_director_delete(self, director_service, director_dao_mock):
         director_service.delete(1)
         assert director_dao_mock.delete.called
 
-
-    # @pytest.mark.parametrize('page', [1, None], ids=['with page', 'without page'])
-    # def test_get_director(self, director_dao_mock, director_service, page):
-    #     director = director_service.get_all(page=page, sort_by=None)
-    #     assert len(director) == 2
-    #     assert director == director_dao_mock.get_all.return_value
-    #     director_dao_mock.get_all.assert_called_with(page=page, sort_by=None)
-    #
-    # @pytest.mark.parametrize('sort_by', ['created', None], ids=['with sort', 'without sort'])
-    # def test_get_director(self, director_dao_mock, director_service, sort_by):
-    #     director = director_service.get_all(page=None, sort_by=sort_by)
-    #     assert len(director) == 2
-    #     assert director == director_dao_mock.get_all.return_value
-    #     director_dao_mock.get_all.assert_called_with(page=None, sort_by=sort_by)

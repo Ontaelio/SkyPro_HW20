@@ -41,3 +41,8 @@ def director_as_dict():
     return {'id': 1,
             'name': 'Ослик Натужный'}
 
+@pytest.fixture
+def genre_as_dict():
+    return {'id': 1,
+            'name': 'Внезапность'}
+
