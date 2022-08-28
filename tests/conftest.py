@@ -46,3 +46,15 @@ def genre_as_dict():
     return {'id': 1,
             'name': 'Внезапность'}
 
+
+@pytest.fixture
+def movie_as_dict():
+    return {
+            'title': 'Test movie',
+            'description': 'Test arrives at Testtown, then test happens',
+            'trailer': 'youtube',
+            'year': 1998,
+            'rating': 9.0,
+            'genre_id': 1,
+            'director_id': 1,
+            }
